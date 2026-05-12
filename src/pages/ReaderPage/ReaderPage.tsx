@@ -62,7 +62,7 @@ const ReaderPage: React.FC = () => {
     setActiveSentenceId(activeSentence?.id || null)
   }
 
-  // 错误状态
+  // 错误状态1
   if (error) {
     return (
       <div className="reader-page">
