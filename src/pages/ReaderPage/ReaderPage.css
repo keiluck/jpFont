@@ -1,0 +1,150 @@
+.reader-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.article-header {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.reader-back-btn {
+  background: none;
+  border: 1.5px solid #dee2e6;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #457b9d;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: inline-block;
+  transition: background 0.15s;
+}
+
+.reader-back-btn:hover {
+  background: #e9ecef;
+}
+
+.article-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.article-meta {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  margin: 0;
+}
+
+.content-section {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+/* 加载状态样式 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f0f0f0;
+  border-top: 4px solid #1976d2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* 错误状态样式 */
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.error-message p {
+  color: #d32f2f;
+  font-size: 18px;
+  margin: 0;
+}
+
+.error-message button {
+  padding: 10px 24px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.error-message button:hover {
+  background-color: #1565c0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .reader-page {
+    padding: 12px;
+  }
+
+  .article-header {
+    padding: 20px;
+  }
+
+  .article-title {
+    font-size: 24px;
+  }
+
+  .content-section {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+}

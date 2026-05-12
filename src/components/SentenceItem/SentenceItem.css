@@ -1,0 +1,37 @@
+.sentence-item {
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid #e0e0e0;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.sentence-item.active {
+  border-left-color: #1976d2;
+  background-color: #e3f2fd;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+}
+
+.sentence-text {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.sentence-item.active .sentence-text {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.sentence-translation {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+.sentence-item.active .sentence-translation {
+  color: #555;
+}
