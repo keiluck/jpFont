@@ -55,7 +55,7 @@ const ReaderPage: React.FC = () => {
   }
 
   /**
-   * 处理音频时间更新事件
+   * 处理音频时间更新事件1
    */
   const handleTimeUpdate = (currentTime: number) => {
     const activeSentence = findActiveSentence(currentTime)
