@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Article, Sentence } from '../../types'
-import AudioPlayer from '../../components/AudioPlayer/AudioPlayer'
-import SentenceList from '../../components/SentenceList/SentenceList'
-import { getMockArticle } from '../../services/mockData'
+import { Article, Sentence } from '@/types'
+import AudioPlayer from '@/components/PC/AudioPlayer/AudioPlayer'
+import SentenceList from '@/components/PC/SentenceList/SentenceList'
+import { getMockArticle } from '@/services/mockData'
 import './ReaderPage.css'
 
 /**

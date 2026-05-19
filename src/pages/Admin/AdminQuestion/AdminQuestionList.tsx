@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Question } from '../../types'
-import './AdminPage.css'
+import { Question } from '@/types'
+import '@/pages/Admin/AdminHome/AdminPage.css'
 
 const MOCK_QUESTIONS: Question[] = [
   {

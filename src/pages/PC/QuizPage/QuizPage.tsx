@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { useLanguage } from '../../hooks/useLanguage'
-import { Lang } from '../../types'
+import { useLanguage } from '@/hooks/useLanguage'
+import { Lang } from '@/types'
 import './QuizPage.css'
 
 const CATEGORIES = [

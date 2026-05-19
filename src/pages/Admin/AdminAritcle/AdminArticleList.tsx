@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Article } from '../../types'
-import './AdminPage.css'
+import { Article } from '@/types'
+import '@/pages/Admin/AdminHome/AdminPage.css'
 
 const MOCK_ARTICLES: Article[] = [
   { id: '1', title: '自我介绍', content: 'はじめまして...', audioUrl: '/audio/001.mp3', sentences: [], createdAt: '2024-01-01T00:00:00Z', updatedAt: '2024-01-01T00:00:00Z' },

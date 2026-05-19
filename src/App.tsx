@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage/HomePage'
-import CategoryPage from './pages/CategoryPage/CategoryPage'
-import ReaderPage from './pages/ReaderPage/ReaderPage'
-import QuizPage from './pages/QuizPage/QuizPage'
-import QuizCategoryPage from './pages/QuizCategoryPage/QuizCategoryPage'
-import QuizDetailPage from './pages/QuizDetailPage/QuizDetailPage'
-import AdminPage from './pages/AdminPage/AdminPage'
+import HomePage from '@/pages/PC/HomePage/HomePage'
+import CategoryPage from '@/pages/PC/CategoryPage/CategoryPage'
+import ReaderPage from '@/pages/PC/ReaderPage/ReaderPage'
+import QuizPage from '@/pages/PC/QuizPage/QuizPage'
+import QuizCategoryPage from '@/pages/PC/QuizCategoryPage/QuizCategoryPage'
+import QuizDetailPage from '@/pages/PC/QuizDetailPage/QuizDetailPage'
+import AdminPage from '@/pages/Admin/AdminHome/AdminPage'
 import './App.css'
 
 function App() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import './SentenceItem.css'
-import { RubyWord } from '../../types'
+import { RubyWord } from '@/types'
 
 const typeColor: Record<string, string> = {
   han: '#ffb74d',      // 汉字：橙色

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { Question, Lang } from '../../types'
-import { useLanguage } from '../../hooks/useLanguage'
+import { Question, Lang } from '@/types'
+import { useLanguage } from '@/hooks/useLanguage'
 import './QuizCategoryPage.css'
 
 const DIFF_LABEL: Record<string, string> = { EASY: '简单', MEDIUM: '中等', HARD: '困难' }

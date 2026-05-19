@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AdminQuestionList from './AdminQuestionList'
-import AdminQuestionForm from './AdminQuestionForm'
-import AdminArticleList from './AdminArticleList'
+import AdminQuestionList from '@/pages/Admin/AdminQuestion/AdminQuestionList'
+import AdminQuestionForm from '@/pages/Admin/AdminQuestion/AdminQuestionForm'
+import AdminArticleList from '@/pages/Admin/AdminAritcle/AdminArticleList'
 import './AdminPage.css'
 
 type AdminTab = 'questions' | 'question-form' | 'articles'

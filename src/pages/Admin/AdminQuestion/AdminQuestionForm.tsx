@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './AdminPage.css'
+import '@/pages/Admin/AdminHome/AdminPage.css'
 
 interface Props {
   editId: number | null

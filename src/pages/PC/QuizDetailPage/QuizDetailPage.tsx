@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { Question, Lang, QuestionOption } from '../../types'
-import { useLanguage } from '../../hooks/useLanguage'
+import { Question, Lang, QuestionOption } from '@/types'
+import { useLanguage } from '@/hooks/useLanguage'
 import './QuizDetailPage.css'
 
 // mock 数据（后端联调后替换）

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sentence } from '../../types'
+import { Sentence } from '@/types'
 import SentenceItem from '../SentenceItem/SentenceItem'
 import './SentenceList.css'
 
