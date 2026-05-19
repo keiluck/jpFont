@@ -48,7 +48,7 @@ export default function HomePage() {
           </button>
           <button className="quick-card admin" onClick={() => navigate('/admin')}>
             <span>🛠</span>
-            <span>后台管理dd</span>
+            <span>后台管理</span>
             <span className="quick-sub">题库 / 文章上传</span>
           </button>
         </div>
