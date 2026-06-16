@@ -1,87 +1,78 @@
-import { Article } from '../types'
+import { Article } from '@/types'
 
-/**
- * 模拟数据 - 用于开发和测试
- */
 export const mockArticle: Article = {
-  id: '1',
-  title: '自我介绍',
-  content: 'はじめまして、ケイと申します。フロントエンドエンジニアとして働いています。現在はJavaとAWSも勉強しています。どうぞよろしくお願いいたします。',
-  audioUrl: '/audio/001.mp3',
+  id: '2',
+  title: '基本設計で書いておくと後々助かること',
+  content: 'はい、こんにちは。古賀です。今回は基本設計で書いておくと後々助かることについてお話したいと思います。',
+  audioUrl: '/audio/demo.m4a',
+  createdAt: '2026-06-15T00:00:00Z',
+  updatedAt: '2026-06-15T00:00:00Z',
   sentences: [
-    {
-        id: '1-1',
-        text: 'はじめまして、ケイと申します。',
-        translation: '初次见面，我叫Kei。',
-        startTime: 0,
-        endTime: 3.5,
-        rubyWords: [
-          { text: 'はじめまして' },
-          { text: '、' },
-          { text: 'ケイ' },
-          { text: 'と' },
-          { text: '申', ruby: 'もう' },
-          { text: 'します' },
-          { text: '。' }
-        ]
-    },
-    {
-        id: '1-2',
-        text: 'フロントエンドエンジニアとして働いています。',
-        translation: '我是一名前端工程师。',
-        startTime: 3.5,
-        endTime: 6.8,
-        rubyWords: [
-          { text: 'フロントエンドエンジニア' },
-          { text: 'として' },
-          { text: '働', ruby: 'はたら' },
-          { text: 'いて' },
-          { text: 'います' },
-          { text: '。' }
-        ]
-    },
-    {
-        id: '1-3',
-        text: '現在はJavaとAWSも勉強しています。',
-        translation: '我现在也在学习Java和AWS。',
-        startTime: 6.8,
-        endTime: 9.5,
-        rubyWords: [
-          { text: '現在', ruby: 'げんざい' },
-          { text: 'は' },
-          { text: 'Java' },
-          { text: 'と' },
-          { text: 'AWS' },
-          { text: 'も' },
-          { text: '勉強', ruby: 'べんきょう' },
-          { text: 'しています' },
-          { text: '。' }
-        ]
-    },
-    {
-        id: '1-4',
-        text: 'どうぞよろしくお願いいたします。',
-        translation: '请多多关照。',
-        startTime: 9.5,
-        endTime: 12.8,
-        rubyWords: [
-          { text: 'どうぞ' },
-          { text: 'よろしく' },
-          { text: 'お願', ruby: 'ねが' },
-          { text: 'いいた' },
-          { text: 'します' },
-          { text: '。' }
-        ]
-    },
-
+    { id:'s01', text:'はい、こんにちは。古賀です。今回は基本設計で書いておくと後々助かることについてお話したいと思います。', translation:'你好。我是古贺。今天想聊聊在基本设计中提前写下哪些内容，能在日后起到很大帮助。', startTime:0.0, endTime:6.3, rubyWords:[{text:'はい'},{text:'、'},{text:'こんにちは'},{text:'。'},{text:'古賀',ruby:'こが'},{text:'です'},{text:'。'},{text:'今回',ruby:'こんかい'},{text:'は'},{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'で'},{text:'書',ruby:'か'},{text:'いておくと'},{text:'後々',ruby:'のちのち'},{text:'助',ruby:'たす'},{text:'かることについて'},{text:'お話',ruby:'はなし'},{text:'したいと'},{text:'思',ruby:'おも'},{text:'います。'}] },
+    { id:'s02', text:'基本設計書は、今からプログラムで作成するシステムやサービスをどのような作りにするかを書くことがメインです。', translation:'基本设计书的主要内容，是描述即将用程序开发的系统或服务的整体结构。', startTime:6.8, endTime:13.5, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'は、'},{text:'今',ruby:'いま'},{text:'からプログラムで'},{text:'作成',ruby:'さくせい'},{text:'するシステムやサービスをどのような'},{text:'作',ruby:'つく'},{text:'りにするかを'},{text:'書',ruby:'か'},{text:'くことがメインです。'}] },
+    { id:'s03', text:'それに加えて、理由、使い方、変更点、この三つを書いておくことで、後々の工程で自分たちを助けてくれるはずです。', translation:'除此之外，补充写上「原因」「使用方式」「变更点」这三项，将来的工作流程中会对我们大有帮助。', startTime:14.0, endTime:20.8, rubyWords:[{text:'それに'},{text:'加',ruby:'くわ'},{text:'えて、'},{text:'理由',ruby:'りゆう'},{text:'、'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'、'},{text:'変更点',ruby:'へんこうてん'},{text:'、この'},{text:'三',ruby:'みっ'},{text:'つを'},{text:'書',ruby:'か'},{text:'いておくことで、'},{text:'後々',ruby:'のちのち'},{text:'の'},{text:'工程',ruby:'こうてい'},{text:'で'},{text:'自分',ruby:'じぶん'},{text:'たちを'},{text:'助',ruby:'たす'},{text:'けてくれるはずです。'}] },
+    { id:'s04', text:'これらを書いてさらにいい基本設計書にしていきましょう。', translation:'让我们把这些内容写进去，打造更优质的基本设计书吧。', startTime:21.3, endTime:24.7, rubyWords:[{text:'これらを'},{text:'書',ruby:'か'},{text:'いてさらにいい'},{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'にしていきましょう。'}] },
+    { id:'s05', text:'基本設計についてはこちらの動画でお話をしていますので、詳細を知りたい方はこちらを見てみてください。', translation:'关于基本设计，我在这个视频中有详细说明，想深入了解的朋友可以去看看。', startTime:25.2, endTime:31.4, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'についてはこちらの'},{text:'動画',ruby:'どうが'},{text:'でお'},{text:'話',ruby:'はなし'},{text:'をしていますので、'},{text:'詳細',ruby:'しょうさい'},{text:'を'},{text:'知',ruby:'し'},{text:'りたい'},{text:'方',ruby:'かた'},{text:'はこちらを'},{text:'見',ruby:'み'},{text:'てみてください。'}] },
+    { id:'s06', text:'概要欄にリンクを貼っておきます。', translation:'链接我会贴在简介栏里。', startTime:31.9, endTime:33.9, rubyWords:[{text:'概要欄',ruby:'がいようらん'},{text:'にリンクを'},{text:'貼',ruby:'は'},{text:'っておきます。'}] },
+    { id:'s07', text:'今回話す内容です。', translation:'以下是本次讲解的内容。', startTime:34.4, endTime:35.5, rubyWords:[{text:'今回',ruby:'こんかい'},{text:'話',ruby:'はな'},{text:'す'},{text:'内容',ruby:'ないよう'},{text:'です。'}] },
+    { id:'s08', text:'基本設計に書いておくと助かること、理由、使い方、変更点についてお話します。', translation:'我将介绍写进基本设计中很有用的内容，包括：原因、使用方式、变更点。', startTime:36.0, endTime:40.7, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'に'},{text:'書',ruby:'か'},{text:'いておくと'},{text:'助',ruby:'たす'},{text:'かること、'},{text:'理由',ruby:'りゆう'},{text:'、'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'、'},{text:'変更点',ruby:'へんこうてん'},{text:'についてお'},{text:'話',ruby:'はなし'},{text:'します。'}] },
+    { id:'s09', text:'基本設計書に書いておいた方がいいこと一つ目は、その設計にした理由です。', translation:'写进基本设计书的第一个建议，是「做出该设计的原因」。', startTime:41.2, endTime:45.6, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'に'},{text:'書',ruby:'か'},{text:'いておいた'},{text:'方',ruby:'ほう'},{text:'がいいこと'},{text:'一',ruby:'ひと'},{text:'つ'},{text:'目',ruby:'め'},{text:'は、その'},{text:'設計',ruby:'せっけい'},{text:'にした'},{text:'理由',ruby:'りゆう'},{text:'です。'}] },
+    { id:'s10', text:'設計書は決め事だけを書きがちですが、その設計にした理由も書き加えておきましょう。', translation:'设计书容易只写结论，但建议同时写上做出该设计的原因。', startTime:46.1, endTime:51.1, rubyWords:[{text:'設計書',ruby:'せっけいしょ'},{text:'は'},{text:'決',ruby:'き'},{text:'め'},{text:'事',ruby:'こと'},{text:'だけを'},{text:'書',ruby:'か'},{text:'きがちですが、その'},{text:'設計',ruby:'せっけい'},{text:'にした'},{text:'理由',ruby:'りゆう'},{text:'も'},{text:'書',ruby:'か'},{text:'き'},{text:'加',ruby:'くわ'},{text:'えておきましょう。'}] },
+    { id:'s11', text:'単純な例ですが、操作ミスを防ぐためエラーチェックを追加する、作業を効率化するため本処理で自動化する、お客さんから要望があったため本処理を追加するなど、その設計にする理由を書き加えておきましょう。', translation:'举个简单的例子，比如「为防止操作失误添加错误检查」「为提高效率在主流程中实现自动化」「应客户需求新增该处理」等，请把设计的原因一并写上。', startTime:51.6, endTime:63.8, rubyWords:[{text:'単純',ruby:'たんじゅん'},{text:'な'},{text:'例',ruby:'れい'},{text:'ですが、'},{text:'操作',ruby:'そうさ'},{text:'ミスを'},{text:'防',ruby:'ふせ'},{text:'ぐためエラーチェックを'},{text:'追加',ruby:'ついか'},{text:'する、'},{text:'作業',ruby:'さぎょう'},{text:'を'},{text:'効率化',ruby:'こうりつか'},{text:'するため'},{text:'本処理',ruby:'ほんしょり'},{text:'で'},{text:'自動化',ruby:'じどうか'},{text:'する、お'},{text:'客',ruby:'きゃく'},{text:'さんから'},{text:'要望',ruby:'ようぼう'},{text:'があったため'},{text:'本処理',ruby:'ほんしょり'},{text:'を'},{text:'追加',ruby:'ついか'},{text:'するなど、その'},{text:'設計',ruby:'せっけい'},{text:'にする'},{text:'理由',ruby:'りゆう'},{text:'を'},{text:'書',ruby:'か'},{text:'き'},{text:'加',ruby:'くわ'},{text:'えておきましょう。'}] },
+    { id:'s12', text:'要件定義書や議事録にすでに書いてあるかもしれませんが、それを毎回掘り起こすのは手間ですし大変です。', translation:'也许需求定义书或会议记录中已经有了，但每次翻出来查非常麻烦，也很费时。', startTime:64.3, endTime:70.5, rubyWords:[{text:'要件定義書',ruby:'ようけんていぎしょ'},{text:'や'},{text:'議事録',ruby:'ぎじろく'},{text:'にすでに'},{text:'書',ruby:'か'},{text:'いてあるかもしれませんが、それを'},{text:'毎回',ruby:'まいかい'},{text:'掘',ruby:'ほ'},{text:'り'},{text:'起',ruby:'お'},{text:'こすのは'},{text:'手間',ruby:'てま'},{text:'ですし'},{text:'大変',ruby:'たいへん'},{text:'です。'}] },
+    { id:'s13', text:'僕もこの掘り返し作業で時間を無駄にしてしまったことが何度かあります。', translation:'我自己也有几次因为这种翻找工作浪费了很多时间。', startTime:71.0, endTime:75.3, rubyWords:[{text:'僕',ruby:'ぼく'},{text:'もこの'},{text:'掘',ruby:'ほ'},{text:'り'},{text:'返',ruby:'かえ'},{text:'し'},{text:'作業',ruby:'さぎょう'},{text:'で'},{text:'時間',ruby:'じかん'},{text:'を'},{text:'無駄',ruby:'むだ'},{text:'にしてしまったことが'},{text:'何度',ruby:'なんど'},{text:'かあります。'}] },
+    { id:'s14', text:'基本設計書に理由を書いておくことで、設計と理由が紐付くので、確認作業がとても楽になります。', translation:'在基本设计书中写明原因，设计与原因就能对应起来，确认工作也会轻松很多。', startTime:75.8, endTime:81.5, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'に'},{text:'理由',ruby:'りゆう'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことで、'},{text:'設計',ruby:'せっけい'},{text:'と'},{text:'理由',ruby:'りゆう'},{text:'が'},{text:'紐付',ruby:'ひもづ'},{text:'くので、'},{text:'確認',ruby:'かくにん'},{text:'作業',ruby:'さぎょう'},{text:'がとても'},{text:'楽',ruby:'らく'},{text:'になります。'}] },
+    { id:'s15', text:'理由を書いておくメリットですが、詳細設計や開発時のミスを防ぐためです。', translation:'写明原因的好处，就是能防止在详细设计和开发阶段出现失误。', startTime:82.0, endTime:86.4, rubyWords:[{text:'理由',ruby:'りゆう'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくメリットですが、'},{text:'詳細設計',ruby:'しょうさいせっけい'},{text:'や'},{text:'開発',ruby:'かいはつ'},{text:'時',ruby:'じ'},{text:'のミスを'},{text:'防',ruby:'ふせ'},{text:'ぐためです。'}] },
+    { id:'s16', text:'基本設計書を作成している時は、その設計にした理由は頭に入っているんですが、プロジェクトを進めていくと、あれ、なんでこうしたんだっけ？と思うことがよくあります。', translation:'制作基本设计书时，设计的原因还记在脑子里，但随着项目推进，经常会想：「咦，这里当初为什么这么做？」', startTime:86.9, endTime:96.8, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'を'},{text:'作成',ruby:'さくせい'},{text:'している'},{text:'時',ruby:'とき'},{text:'は、その'},{text:'設計',ruby:'せっけい'},{text:'にした'},{text:'理由',ruby:'りゆう'},{text:'は'},{text:'頭',ruby:'あたま'},{text:'に'},{text:'入',ruby:'はい'},{text:'っているんですが、プロジェクトを'},{text:'進',ruby:'すす'},{text:'めていくと、あれ、なんでこうしたんだっけ？と'},{text:'思',ruby:'おも'},{text:'うことがよくあります。'}] },
+    { id:'s17', text:'その理由を思い出せずに詳細設計や開発作業をしてしまうと、間違った設計にしてしまったり、バグを引き起こしてしまったり、いろいろと考慮漏れが発生してしまいます。', translation:'如果想不起原因就进行详细设计或开发，可能导致设计错误、引发Bug，或出现各种疏漏。', startTime:97.3, endTime:107.1, rubyWords:[{text:'その'},{text:'理由',ruby:'りゆう'},{text:'を'},{text:'思',ruby:'おも'},{text:'い'},{text:'出',ruby:'だ'},{text:'せずに'},{text:'詳細設計',ruby:'しょうさいせっけい'},{text:'や'},{text:'開発',ruby:'かいはつ'},{text:'作業',ruby:'さぎょう'},{text:'をしてしまうと、'},{text:'間違',ruby:'まちが'},{text:'った'},{text:'設計',ruby:'せっけい'},{text:'にしてしまったり、バグを'},{text:'引',ruby:'ひ'},{text:'き'},{text:'起',ruby:'お'},{text:'こしてしまったり、いろいろと'},{text:'考慮',ruby:'こうりょ'},{text:'漏',ruby:'も'},{text:'れが'},{text:'発生',ruby:'はっせい'},{text:'してしまいます。'}] },
+    { id:'s18', text:'また、後々機能の追加をする時も理由を書いておくことで、何ができなくなるのか、どこに影響が出るのか、この変更の仕方でいいのか、判断がつきやすくなります。', translation:'此外，后期追加功能时，如果写明了原因，就更容易判断：什么会受影响、哪里会变化、这样修改是否合适。', startTime:107.6, endTime:117.0, rubyWords:[{text:'また、'},{text:'後々',ruby:'のちのち'},{text:'機能',ruby:'きのう'},{text:'の'},{text:'追加',ruby:'ついか'},{text:'をする'},{text:'時',ruby:'とき'},{text:'も'},{text:'理由',ruby:'りゆう'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことで、'},{text:'何',ruby:'なに'},{text:'ができなくなるのか、どこに'},{text:'影響',ruby:'えいきょう'},{text:'が'},{text:'出',ruby:'で'},{text:'るのか、この'},{text:'変更',ruby:'へんこう'},{text:'の'},{text:'仕方',ruby:'しかた'},{text:'でいいのか、'},{text:'判断',ruby:'はんだん'},{text:'がつきやすくなります。'}] },
+    { id:'s19', text:'プロジェクトを進めていけばミスはつきものです。', translation:'项目推进过程中，失误在所难免。', startTime:117.5, endTime:120.4, rubyWords:[{text:'プロジェクトを'},{text:'進',ruby:'すす'},{text:'めていけばミスはつきものです。'}] },
+    { id:'s20', text:'ミスが起きてもカバーできる状態にしておくことが大事です。', translation:'重要的是，即使出现失误也能及时应对。', startTime:120.9, endTime:124.4, rubyWords:[{text:'ミスが'},{text:'起',ruby:'お'},{text:'きてもカバーできる'},{text:'状態',ruby:'じょうたい'},{text:'にしておくことが'},{text:'大事',ruby:'だいじ'},{text:'です。'}] },
+    { id:'s21', text:'そのために基本設計書に理由を付け加えておきましょう。', translation:'为此，请在基本设计书中补充写上原因吧。', startTime:124.9, endTime:128.2, rubyWords:[{text:'そのために'},{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'に'},{text:'理由',ruby:'りゆう'},{text:'を'},{text:'付',ruby:'つ'},{text:'け'},{text:'加',ruby:'くわ'},{text:'えておきましょう。'}] },
+    { id:'s22', text:'基本設計に書いておいた方がいいこと二つ目、使い方です。', translation:'写进基本设计的第二个建议，是「使用方式」。', startTime:128.7, endTime:132.1, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'に'},{text:'書',ruby:'か'},{text:'いておいた'},{text:'方',ruby:'ほう'},{text:'がいいこと'},{text:'二',ruby:'ふた'},{text:'つ'},{text:'目',ruby:'め'},{text:'、'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'です。'}] },
+    { id:'s23', text:'基本設計には作る内容だけ書くのではなくて、実際の使い方についても書いておきましょう。', translation:'基本设计不只要写开发内容，也要写上实际的使用方式。', startTime:132.6, endTime:137.9, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'には'},{text:'作',ruby:'つく'},{text:'る'},{text:'内容',ruby:'ないよう'},{text:'だけ'},{text:'書',ruby:'か'},{text:'くのではなくて、'},{text:'実際',ruby:'じっさい'},{text:'の'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'についても'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s24', text:'前後で使用する画面だったり、実際に使う場面、タイミング、画面の操作の仕方、設定の仕方、こういったことを書いておきましょう。', translation:'比如前后相关的画面、实际使用场景、时机、画面操作方式、设置方式，这些都请写进去。', startTime:138.4, endTime:146.1, rubyWords:[{text:'前後',ruby:'ぜんご'},{text:'で'},{text:'使用',ruby:'しよう'},{text:'する'},{text:'画面',ruby:'がめん'},{text:'だったり、'},{text:'実際',ruby:'じっさい'},{text:'に'},{text:'使',ruby:'つか'},{text:'う'},{text:'場面',ruby:'ばめん'},{text:'、タイミング、'},{text:'画面',ruby:'がめん'},{text:'の'},{text:'操作',ruby:'そうさ'},{text:'の'},{text:'仕方',ruby:'しかた'},{text:'、'},{text:'設定',ruby:'せってい'},{text:'の'},{text:'仕方',ruby:'しかた'},{text:'、こういったことを'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s25', text:'ただ、別で後々操作マニュアルを作成することもあるかと思うので、細かく書く必要はありません。', translation:'不过，后期可能还会另行制作操作手册，所以不必写得太细。', startTime:146.6, endTime:152.3, rubyWords:[{text:'ただ、'},{text:'別',ruby:'べつ'},{text:'で'},{text:'後々',ruby:'のちのち'},{text:'操作',ruby:'そうさ'},{text:'マニュアルを'},{text:'作成',ruby:'さくせい'},{text:'することもあるかと'},{text:'思',ruby:'おも'},{text:'うので、'},{text:'細',ruby:'こま'},{text:'かく'},{text:'書',ruby:'か'},{text:'く'},{text:'必要',ruby:'ひつよう'},{text:'はありません。'}] },
+    { id:'s26', text:'イメージを持たせる程度でいいかなと思います。', translation:'能让人有个大概的印象就足够了。', startTime:152.8, endTime:155.6, rubyWords:[{text:'イメージを'},{text:'持',ruby:'も'},{text:'たせる'},{text:'程度',ruby:'ていど'},{text:'でいいかなと'},{text:'思',ruby:'おも'},{text:'います。'}] },
+    { id:'s27', text:'使い方を書いておくことで、お客さんが実際に使う時をイメージして設計書の内容を確認することができます。', translation:'写明使用方式后，客户就能设身处地地想象实际使用场景，从而更好地确认设计书的内容。', startTime:156.1, endTime:162.4, rubyWords:[{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことで、お'},{text:'客',ruby:'きゃく'},{text:'さんが'},{text:'実際',ruby:'じっさい'},{text:'に'},{text:'使',ruby:'つか'},{text:'う'},{text:'時',ruby:'とき'},{text:'をイメージして'},{text:'設計書',ruby:'せっけいしょ'},{text:'の'},{text:'内容',ruby:'ないよう'},{text:'を'},{text:'確認',ruby:'かくにん'},{text:'することができます。'}] },
+    { id:'s28', text:'プログラムが実際に出来上がった時に、完成イメージと全く違うものが出来上がってしまう可能性もかなり低くなります。', translation:'程序实际完成时，与预期效果完全不符的可能性也会大大降低。', startTime:162.9, endTime:169.8, rubyWords:[{text:'プログラムが'},{text:'実際',ruby:'じっさい'},{text:'に'},{text:'出来上',ruby:'できあ'},{text:'がった'},{text:'時',ruby:'とき'},{text:'に、'},{text:'完成',ruby:'かんせい'},{text:'イメージと'},{text:'全',ruby:'まった'},{text:'く'},{text:'違',ruby:'ちが'},{text:'うものが'},{text:'出来上',ruby:'できあ'},{text:'がってしまう'},{text:'可能性',ruby:'かのうせい'},{text:'もかなり'},{text:'低',ruby:'ひく'},{text:'くなります。'}] },
+    { id:'s29', text:'また、こういう風にした方がもっと良くなるのでは？という改善意見も出るようになりますし、この使い方になるのであれば、あの画面でも対応が必要では？というように、先ほどの理由と同じようにミスを防ぐことにもつながります。', translation:'此外，还会出现「这样改会不会更好？」的改善建议，以及「如果是这种用法，那个页面也需要处理吧？」的发现，和之前说的原因一样，有助于防止失误。', startTime:170.3, endTime:183.6, rubyWords:[{text:'また、こういう'},{text:'風',ruby:'ふう'},{text:'にした'},{text:'方',ruby:'ほう'},{text:'がもっと'},{text:'良',ruby:'よ'},{text:'くなるのでは？という'},{text:'改善',ruby:'かいぜん'},{text:'意見',ruby:'いけん'},{text:'も'},{text:'出',ruby:'で'},{text:'るようになりますし、この'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'になるのであれば、あの'},{text:'画面',ruby:'がめん'},{text:'でも'},{text:'対応',ruby:'たいおう'},{text:'が'},{text:'必要',ruby:'ひつよう'},{text:'では？というように、'},{text:'先',ruby:'さき'},{text:'ほどの'},{text:'理由',ruby:'りゆう'},{text:'と'},{text:'同',ruby:'おな'},{text:'じようにミスを'},{text:'防',ruby:'ふせ'},{text:'ぐことにもつながります。'}] },
+    { id:'s30', text:'あとで操作マニュアルを作る時の元資料にもなりますし、改善ミス防止のために使い方も書いておきましょう。', translation:'它也能成为日后制作操作手册的素材，为了改善和防止失误，请写上使用方式。', startTime:184.1, endTime:190.4, rubyWords:[{text:'あとで'},{text:'操作',ruby:'そうさ'},{text:'マニュアルを'},{text:'作',ruby:'つく'},{text:'る'},{text:'時',ruby:'とき'},{text:'の'},{text:'元資料',ruby:'もとしりょう'},{text:'にもなりますし、'},{text:'改善',ruby:'かいぜん'},{text:'ミス'},{text:'防止',ruby:'ぼうし'},{text:'のために'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'も'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s31', text:'基本設計に書いておいた方がいいこと三つ目、変更点です。', translation:'写进基本设计的第三个建议，是「变更点」。', startTime:190.9, endTime:194.3, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'に'},{text:'書',ruby:'か'},{text:'いておいた'},{text:'方',ruby:'ほう'},{text:'がいいこと'},{text:'三',ruby:'みっ'},{text:'つ'},{text:'目',ruby:'め'},{text:'、'},{text:'変更点',ruby:'へんこうてん'},{text:'です。'}] },
+    { id:'s32', text:'先ほどの理由、使い方を補足する内容になりますが、今現在使っているシステムやサービスの作り直し、リプレースであれば、現行システムサービスとの変更点も書いておきましょう。', translation:'作为对前面「原因」和「使用方式」的补充，如果是对现有系统或服务的重建或替换，请写明与现行系统的变更点。', startTime:194.8, endTime:205.2, rubyWords:[{text:'先',ruby:'さき'},{text:'ほどの'},{text:'理由',ruby:'りゆう'},{text:'、'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'を'},{text:'補足',ruby:'ほそく'},{text:'する'},{text:'内容',ruby:'ないよう'},{text:'になりますが、'},{text:'今現在',ruby:'いまげんざい'},{text:'使',ruby:'つか'},{text:'っているシステムやサービスの'},{text:'作',ruby:'つく'},{text:'り'},{text:'直',ruby:'なお'},{text:'し、リプレースであれば、'},{text:'現行',ruby:'げんこう'},{text:'システムサービスとの'},{text:'変更点',ruby:'へんこうてん'},{text:'も'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s33', text:'これから作るシステムとは関係ないからといって、旧仕様のことを書きたがらない人もいますが、お客さんによりイメージを持ってもらったり、後工程で役立つ情報であれば書いておくことをお勧めします。', translation:'有些人认为旧规格与新系统无关就不想写，但如果能帮助客户理解、或在后续流程中有用，建议还是写上。', startTime:205.7, endTime:217.4, rubyWords:[{text:'これから'},{text:'作',ruby:'つく'},{text:'るシステムとは'},{text:'関係',ruby:'かんけい'},{text:'ないからといって、'},{text:'旧',ruby:'きゅう'},{text:'仕様',ruby:'しよう'},{text:'のことを'},{text:'書',ruby:'か'},{text:'きたがらない'},{text:'人',ruby:'ひと'},{text:'もいますが、お'},{text:'客',ruby:'きゃく'},{text:'さんによりイメージを'},{text:'持',ruby:'も'},{text:'ってもらったり、'},{text:'後',ruby:'あと'},{text:'工程',ruby:'こうてい'},{text:'で'},{text:'役立',ruby:'やくだ'},{text:'つ'},{text:'情報',ruby:'じょうほう'},{text:'であれば'},{text:'書',ruby:'か'},{text:'いておくことをお'},{text:'勧',ruby:'すす'},{text:'めします。'}] },
+    { id:'s34', text:'お客さんからテスト工程や操作説明の段階で今のシステムではできているのにここができていないよという指摘をされることがありますが、変更点が設計段階で記載されていれば、その指摘も少なくすることができます。', translation:'客户在测试或操作说明阶段有时会指出「现在的系统能做到，新的却不行」，但如果设计阶段已记载变更点，这类反馈就会减少。', startTime:217.9, endTime:230.4, rubyWords:[{text:'お'},{text:'客',ruby:'きゃく'},{text:'さんからテスト'},{text:'工程',ruby:'こうてい'},{text:'や'},{text:'操作',ruby:'そうさ'},{text:'説明',ruby:'せつめい'},{text:'の'},{text:'段階',ruby:'だんかい'},{text:'で'},{text:'今',ruby:'いま'},{text:'のシステムではできているのにここができていないよという'},{text:'指摘',ruby:'してき'},{text:'をされることがありますが、'},{text:'変更点',ruby:'へんこうてん'},{text:'が'},{text:'設計',ruby:'せっけい'},{text:'段階',ruby:'だんかい'},{text:'で'},{text:'記載',ruby:'きさい'},{text:'されていれば、その'},{text:'指摘',ruby:'してき'},{text:'も'},{text:'少',ruby:'すく'},{text:'なくすることができます。'}] },
+    { id:'s35', text:'お客さんの中には変わることに対する抵抗感を持っている人も少なくないので、変更点を書いておくことでその抵抗感を和らげる働きもあります。', translation:'客户中不少人对改变有抵触，写明变更点也有助于缓解这种抵触情绪。', startTime:230.9, endTime:239.2, rubyWords:[{text:'お'},{text:'客',ruby:'きゃく'},{text:'さんの'},{text:'中',ruby:'なか'},{text:'には'},{text:'変',ruby:'か'},{text:'わることに'},{text:'対',ruby:'たい'},{text:'する'},{text:'抵抗感',ruby:'ていこうかん'},{text:'を'},{text:'持',ruby:'も'},{text:'っている'},{text:'人',ruby:'ひと'},{text:'も'},{text:'少',ruby:'すく'},{text:'なくないので、'},{text:'変更点',ruby:'へんこうてん'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことでその'},{text:'抵抗感',ruby:'ていこうかん'},{text:'を'},{text:'和',ruby:'やわ'},{text:'らげる'},{text:'働',ruby:'はたら'},{text:'きもあります。'}] },
+    { id:'s36', text:'また、開発作業をする時でも、現行システムを参考にしながらプログラムを作成することがありますが、ここが変わると分かっていれば現行システムの仕様のまま作ってしまうことも防げます。', translation:'开发时，有时会参考现行系统编写程序，但如果明确了哪里有变化，就能避免照搬旧规格。', startTime:239.7, endTime:250.7, rubyWords:[{text:'また、'},{text:'開発',ruby:'かいはつ'},{text:'作業',ruby:'さぎょう'},{text:'をする'},{text:'時',ruby:'とき'},{text:'でも、'},{text:'現行',ruby:'げんこう'},{text:'システムを'},{text:'参考',ruby:'さんこう'},{text:'にしながらプログラムを'},{text:'作成',ruby:'さくせい'},{text:'することがありますが、ここが'},{text:'変',ruby:'か'},{text:'わると'},{text:'分',ruby:'わ'},{text:'かっていれば'},{text:'現行',ruby:'げんこう'},{text:'システムの'},{text:'仕様',ruby:'しよう'},{text:'のまま'},{text:'作',ruby:'つく'},{text:'ってしまうことも'},{text:'防',ruby:'ふせ'},{text:'げます。'}] },
+    { id:'s37', text:'基本設計後にプロジェクトに参加する人も多いです。', translation:'基本设计完成后加入项目的人也很多。', startTime:251.2, endTime:254.2, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'後',ruby:'ご'},{text:'にプロジェクトに'},{text:'参加',ruby:'さんか'},{text:'する'},{text:'人',ruby:'ひと'},{text:'も'},{text:'多',ruby:'おお'},{text:'いです。'}] },
+    { id:'s38', text:'その時にどこが変わったのかがわかると非常にやりやすいですし、質問される数も少なくできて時間の節約にもつながります。', translation:'如果能看清楚哪里变了，新人会容易上手很多，被问到的次数也会减少，从而节省时间。', startTime:254.7, endTime:261.9, rubyWords:[{text:'その'},{text:'時',ruby:'とき'},{text:'にどこが'},{text:'変',ruby:'か'},{text:'わったのかがわかると'},{text:'非常',ruby:'ひじょう'},{text:'にやりやすいですし、'},{text:'質問',ruby:'しつもん'},{text:'される'},{text:'数',ruby:'かず'},{text:'も'},{text:'少',ruby:'すく'},{text:'なくできて'},{text:'時間',ruby:'じかん'},{text:'の'},{text:'節約',ruby:'せつやく'},{text:'にもつながります。'}] },
+    { id:'s39', text:'お客さん側にも自分たちにもメリットがあるので、今から作るシステムやサービスに関係なくても変更点を書いておきましょう。', translation:'对客户和自己都有好处，所以无论与新系统是否直接相关，都请写上变更点。', startTime:262.4, endTime:269.7, rubyWords:[{text:'お'},{text:'客',ruby:'きゃく'},{text:'さん'},{text:'側',ruby:'がわ'},{text:'にも'},{text:'自分',ruby:'じぶん'},{text:'たちにもメリットがあるので、'},{text:'今',ruby:'いま'},{text:'から'},{text:'作',ruby:'つく'},{text:'るシステムやサービスに'},{text:'関係',ruby:'かんけい'},{text:'なくても'},{text:'変更点',ruby:'へんこうてん'},{text:'を'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s40', text:'最後まとめです。', translation:'最后来总结一下。', startTime:270.2, endTime:271.2, rubyWords:[{text:'最後',ruby:'さいご'},{text:'まとめです。'}] },
+    { id:'s41', text:'基本設計に理由、使い方、変更点を書いておくと後々助かります。', translation:'在基本设计中写上原因、使用方式、变更点，日后会很有帮助。', startTime:271.7, endTime:275.5, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'に'},{text:'理由',ruby:'りゆう'},{text:'、'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'、'},{text:'変更点',ruby:'へんこうてん'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくと'},{text:'後々',ruby:'のちのち'},{text:'助',ruby:'たす'},{text:'かります。'}] },
+    { id:'s42', text:'その設計にする理由を書いておくことで、詳細設計や開発時のミスを防ぐことができます。', translation:'写明设计原因，能防止详细设计和开发时的失误。', startTime:276.0, endTime:281.2, rubyWords:[{text:'その'},{text:'設計',ruby:'せっけい'},{text:'にする'},{text:'理由',ruby:'りゆう'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことで、'},{text:'詳細設計',ruby:'しょうさいせっけい'},{text:'や'},{text:'開発',ruby:'かいはつ'},{text:'時',ruby:'じ'},{text:'のミスを'},{text:'防',ruby:'ふせ'},{text:'ぐことができます。'}] },
+    { id:'s43', text:'画面や機能の使い方を書いておくことで、完成イメージ通りのものができやすくなります。', translation:'写明页面和功能的使用方式，更容易做出符合预期的成品。', startTime:281.7, endTime:286.9, rubyWords:[{text:'画面',ruby:'がめん'},{text:'や'},{text:'機能',ruby:'きのう'},{text:'の'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことで、'},{text:'完成',ruby:'かんせい'},{text:'イメージ'},{text:'通',ruby:'どお'},{text:'りのものができやすくなります。'}] },
+    { id:'s44', text:'改善案が出たり、考慮漏れを防ぐことができます。', translation:'还能产生改善方案，防止疏漏。', startTime:287.4, endTime:290.3, rubyWords:[{text:'改善案',ruby:'かいぜんあん'},{text:'が'},{text:'出',ruby:'で'},{text:'たり、'},{text:'考慮',ruby:'こうりょ'},{text:'漏',ruby:'も'},{text:'れを'},{text:'防',ruby:'ふせ'},{text:'ぐことができます。'}] },
+    { id:'s45', text:'現行との変更点を書いておくことで、お客さんからの指摘を少なくして、変わることへの抵抗感を和らげます。', translation:'写明与现行系统的变更点，能减少客户的反馈，缓解对变化的抵触。', startTime:290.8, endTime:297.1, rubyWords:[{text:'現行',ruby:'げんこう'},{text:'との'},{text:'変更点',ruby:'へんこうてん'},{text:'を'},{text:'書',ruby:'か'},{text:'いておくことで、お'},{text:'客',ruby:'きゃく'},{text:'さんからの'},{text:'指摘',ruby:'してき'},{text:'を'},{text:'少',ruby:'すく'},{text:'なくして、'},{text:'変',ruby:'か'},{text:'わることへの'},{text:'抵抗感',ruby:'ていこうかん'},{text:'を'},{text:'和',ruby:'やわ'},{text:'らげます。'}] },
+    { id:'s46', text:'開発作業のミスを少なくして、プロジェクト途中参加者への負担を減らすことができます。', translation:'能减少开发失误，降低中途加入项目成员的负担。', startTime:297.6, endTime:302.8, rubyWords:[{text:'開発',ruby:'かいはつ'},{text:'作業',ruby:'さぎょう'},{text:'のミスを'},{text:'少',ruby:'すく'},{text:'なくして、プロジェクト'},{text:'途中',ruby:'とちゅう'},{text:'参加者',ruby:'さんかしゃ'},{text:'への'},{text:'負担',ruby:'ふたん'},{text:'を'},{text:'減',ruby:'へ'},{text:'らすことができます。'}] },
+    { id:'s47', text:'基本設計という成果物に執着してしまうと、基本設計書には作る内容だけ書かれた状態になってしまいがちです。', translation:'如果过于执着于「基本设计书」这个产出物本身，就容易只写开发内容，其他什么都没有。', startTime:303.3, endTime:309.7, rubyWords:[{text:'基本',ruby:'きほん'},{text:'設計',ruby:'せっけい'},{text:'という'},{text:'成果物',ruby:'せいかぶつ'},{text:'に'},{text:'執着',ruby:'しゅうちゃく'},{text:'してしまうと、'},{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'には'},{text:'作',ruby:'つく'},{text:'る'},{text:'内容',ruby:'ないよう'},{text:'だけ'},{text:'書',ruby:'か'},{text:'かれた'},{text:'状態',ruby:'じょうたい'},{text:'になってしまいがちです。'}] },
+    { id:'s48', text:'本当の目的は基本設計書を作ることではありません。', translation:'真正的目的并不是制作基本设计书。', startTime:310.2, endTime:313.2, rubyWords:[{text:'本当',ruby:'ほんとう'},{text:'の'},{text:'目的',ruby:'もくてき'},{text:'は'},{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'を'},{text:'作',ruby:'つく'},{text:'ることではありません。'}] },
+    { id:'s49', text:'その先の目的のために作る内容だけでなくて、理由、使い方、変更点を書いておきましょう。', translation:'为了更远的目标，请不只写开发内容，也把原因、使用方式、变更点一并写上。', startTime:313.7, endTime:319.0, rubyWords:[{text:'その'},{text:'先',ruby:'さき'},{text:'の'},{text:'目的',ruby:'もくてき'},{text:'のために'},{text:'作',ruby:'つく'},{text:'る'},{text:'内容',ruby:'ないよう'},{text:'だけでなくて、'},{text:'理由',ruby:'りゆう'},{text:'、'},{text:'使',ruby:'つか'},{text:'い'},{text:'方',ruby:'かた'},{text:'、'},{text:'変更点',ruby:'へんこうてん'},{text:'を'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s50', text:'お客さんが基本設計書を確認する時も理解がしやすくなります。', translation:'客户确认基本设计书时也会更容易理解。', startTime:319.5, endTime:323.2, rubyWords:[{text:'お'},{text:'客',ruby:'きゃく'},{text:'さんが'},{text:'基本',ruby:'きほん'},{text:'設計書',ruby:'せっけいしょ'},{text:'を'},{text:'確認',ruby:'かくにん'},{text:'する'},{text:'時',ruby:'とき'},{text:'も'},{text:'理解',ruby:'りかい'},{text:'がしやすくなります。'}] },
+    { id:'s51', text:'自分たちが詳細設計開発作業をする時も役立ちます。', translation:'我们自己在做详细设计和开发时也会派上用场。', startTime:323.7, endTime:326.7, rubyWords:[{text:'自分',ruby:'じぶん'},{text:'たちが'},{text:'詳細設計',ruby:'しょうさいせっけい'},{text:'開発',ruby:'かいはつ'},{text:'作業',ruby:'さぎょう'},{text:'をする'},{text:'時',ruby:'とき'},{text:'も'},{text:'役立',ruby:'やくだ'},{text:'ちます。'}] },
+    { id:'s52', text:'ミスが防げます。', translation:'能防止失误。', startTime:327.2, endTime:328.2, rubyWords:[{text:'ミスが'},{text:'防',ruby:'ふせ'},{text:'げます。'}] },
+    { id:'s53', text:'改善案が出てきます。', translation:'能产生改善方案。', startTime:328.7, endTime:330.0, rubyWords:[{text:'改善案',ruby:'かいぜんあん'},{text:'が'},{text:'出',ruby:'で'},{text:'てきます。'}] },
+    { id:'s54', text:'後々の時間節約にもつながります。', translation:'也有助于节省日后的时间。', startTime:330.5, endTime:332.5, rubyWords:[{text:'後々',ruby:'のちのち'},{text:'の'},{text:'時間',ruby:'じかん'},{text:'節約',ruby:'せつやく'},{text:'にもつながります。'}] },
+    { id:'s55', text:'プロジェクトを進めていけば、途中で人が入れ替わることもあります。', translation:'项目推进过程中，人员也可能中途更换。', startTime:333.0, endTime:337.0, rubyWords:[{text:'プロジェクトを'},{text:'進',ruby:'すす'},{text:'めていけば、'},{text:'途中',ruby:'とちゅう'},{text:'で'},{text:'人',ruby:'ひと'},{text:'が'},{text:'入',ruby:'い'},{text:'れ'},{text:'替',ruby:'か'},{text:'わることもあります。'}] },
+    { id:'s56', text:'自分が途中で抜けるかもしれません。', translation:'自己也可能中途离开。', startTime:337.5, endTime:339.6, rubyWords:[{text:'自分',ruby:'じぶん'},{text:'が'},{text:'途中',ruby:'とちゅう'},{text:'で'},{text:'抜',ruby:'ぬ'},{text:'けるかもしれません。'}] },
+    { id:'s57', text:'その時のために、成果物の体裁にこだわらずに、他にも役立ちそうなことがあればいろいろと書いておきましょう。', translation:'为了那种情况，不要拘泥于产出物的形式，凡是看起来有用的内容都尽量写下来吧。', startTime:340.1, endTime:346.6, rubyWords:[{text:'その'},{text:'時',ruby:'とき'},{text:'のために、'},{text:'成果物',ruby:'せいかぶつ'},{text:'の'},{text:'体裁',ruby:'ていさい'},{text:'にこだわらずに、'},{text:'他',ruby:'ほか'},{text:'にも'},{text:'役立',ruby:'やくだ'},{text:'ちそうなことがあればいろいろと'},{text:'書',ruby:'か'},{text:'いておきましょう。'}] },
+    { id:'s58', text:'その一つ一つが後々自分たちを助けてくれるはずです。', translation:'每一条记录都将在日后帮助我们自己。', startTime:347.1, endTime:350.2, rubyWords:[{text:'その'},{text:'一',ruby:'ひと'},{text:'つ'},{text:'一',ruby:'ひと'},{text:'つが'},{text:'後々',ruby:'のちのち'},{text:'自分',ruby:'じぶん'},{text:'たちを'},{text:'助',ruby:'たす'},{text:'けてくれるはずです。'}] },
+    { id:'s59', text:'今回の話はブログにも載せてありますので、よかったら見てみてください。', translation:'本次内容也发布在博客上，感兴趣的朋友可以去看看。', startTime:350.7, endTime:355.0, rubyWords:[{text:'今回',ruby:'こんかい'},{text:'の'},{text:'話',ruby:'はなし'},{text:'はブログにも'},{text:'載',ruby:'の'},{text:'せてありますので、よかったら'},{text:'見',ruby:'み'},{text:'てみてください。'}] },
+    { id:'s60', text:'このチャンネルではIT業界エンジニア情報を中心に動画をお送りしていきます。', translation:'本频道将持续发布以IT行业工程师信息为中心的视频。', startTime:355.5, endTime:360.2, rubyWords:[{text:'このチャンネルではIT'},{text:'業界',ruby:'ぎょうかい'},{text:'エンジニア'},{text:'情報',ruby:'じょうほう'},{text:'を'},{text:'中心',ruby:'ちゅうしん'},{text:'に'},{text:'動画',ruby:'どうが'},{text:'をお'},{text:'送',ruby:'おく'},{text:'りしていきます。'}] },
+    { id:'s61', text:'IT人材として活躍するための役立つ知識や考え方を身につけていきましょう。', translation:'让我们一起学习作为IT人才所需的实用知识和思维方式吧。', startTime:360.7, endTime:365.2, rubyWords:[{text:'IT'},{text:'人材',ruby:'じんざい'},{text:'として'},{text:'活躍',ruby:'かつやく'},{text:'するための'},{text:'役立',ruby:'やくだ'},{text:'つ'},{text:'知識',ruby:'ちしき'},{text:'や'},{text:'考',ruby:'かんが'},{text:'え'},{text:'方',ruby:'かた'},{text:'を'},{text:'身',ruby:'み'},{text:'につけていきましょう。'}] },
+    { id:'s62', text:'最後にチャンネル登録いいね！よろしくお願いします。', translation:'最后，请订阅频道并点赞！谢谢大家！', startTime:365.7, endTime:367.7, rubyWords:[{text:'最後',ruby:'さいご'},{text:'にチャンネル'},{text:'登録',ruby:'とうろく'},{text:'いいね！よろしくお'},{text:'願',ruby:'ねが'},{text:'いします。'}] },
   ],
-  createdAt: '2024-01-01T00:00:00Z',
-  updatedAt: '2024-01-01T00:00:00Z',
 }
 
-/**
- * 获取模拟文章数据
- */
 export const getMockArticle = (): Article => {
   return JSON.parse(JSON.stringify(mockArticle))
 }

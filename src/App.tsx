@@ -6,13 +6,14 @@ import QuizPage from '@/pages/PC/QuizPage/QuizPage'
 import QuizCategoryPage from '@/pages/PC/QuizCategoryPage/QuizCategoryPage'
 import QuizDetailPage from '@/pages/PC/QuizDetailPage/QuizDetailPage'
 import AdminPage from '@/pages/Admin/AdminHome/AdminPage'
+import MobileReaderPage from '@/pages/Mobile/ReaderPage/MobileReaderPage'
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* 语音跟读 */}
+        {/* 语音跟读 PC */}
         <Route path="/" element={<HomePage />} />
         <Route path="/:lang/:category" element={<CategoryPage />} />
         <Route path="/:lang/:category/article/:id" element={<ReaderPage />} />
@@ -22,6 +23,8 @@ function App() {
         <Route path="/quiz/:category/:id" element={<QuizDetailPage />} />
         {/* 后台管理 */}
         <Route path="/admin" element={<AdminPage />} />
+        {/* 手机端跟读 */}
+        <Route path="/m/:lang/:category/article/:id" element={<MobileReaderPage />} />
       </Routes>
     </BrowserRouter>
   )

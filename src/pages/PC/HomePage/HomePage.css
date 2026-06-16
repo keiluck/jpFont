@@ -134,6 +134,9 @@
 .quick-card.quiz { background: #e8f0fe; color: #1d3557; }
 .quick-card.quiz:hover { border-color: #457b9d; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
 
+.quick-card.mobile { background: #fff4e8; color: #7a3e00; }
+.quick-card.mobile:hover { border-color: #e07b00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
+
 .quick-card.admin { background: #f0faf4; color: #1d5237; }
 .quick-card.admin:hover { border-color: #2d9e5f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
 

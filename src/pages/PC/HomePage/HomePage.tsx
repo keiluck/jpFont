@@ -46,6 +46,11 @@ export default function HomePage() {
             <span>分类刷题</span>
             <span className="quick-sub">AWS / IT / 日語</span>
           </button>
+          <button className="quick-card mobile" onClick={() => navigate('/m/japanese/news/article/1')}>
+            <span>📱</span>
+            <span>手机端跟读</span>
+            <span className="quick-sub">日语 / 跟读练习</span>
+          </button>
           <button className="quick-card admin" onClick={() => navigate('/admin')}>
             <span>🛠</span>
             <span>后台管理</span>
