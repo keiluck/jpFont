@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Article, Sentence } from '@/types'
-import { getMockArticle } from '@/services/mockData'
+import { getArticleById } from '@/services/api'
 import MobileAudioPlayer, { TranslationMode } from '@/components/Mobile/AudioPlayer/MobileAudioPlayer'
 import MobileSentenceItem from '@/components/Mobile/SentenceItem/MobileSentenceItem'
 
@@ -34,9 +34,15 @@ const MobileReaderPage: React.FC = () => {
 
   useEffect(() => {
     const load = async () => {
+      if (!id) {
+        setError('缺少文章 ID')
+        setLoading(false)
+        return
+      }
       try {
         setLoading(true)
-        const data = getMockArticle()
+        setError(null)
+        const data = await getArticleById(id)
         setArticle(data)
       } catch (err) {
         setError(err instanceof Error ? err.message : '加载失败')
@@ -137,16 +143,18 @@ const MobileReaderPage: React.FC = () => {
               {/* 句子文本（可隐藏） */}
               {showText ? (
                 <p style={{ fontSize: 20, lineHeight: 2.4, color: '#1a1a2e', margin: 0, wordBreak: 'break-all' }}>
-                  {currentSentence?.rubyWords.map((w, idx) => (
-                    w.ruby && showRuby ? (
-                      <ruby key={idx} style={{ marginRight: 2 }}>
-                        <span>{w.text}</span>
-                        <rt style={{ fontSize: 11, color: '#888' }}>{w.ruby}</rt>
-                      </ruby>
-                    ) : (
-                      <span key={idx}>{w.text}</span>
-                    )
-                  ))}
+                  {currentSentence && currentSentence.rubyWords.length > 0
+                    ? currentSentence.rubyWords.map((w, idx) => (
+                        w.ruby && showRuby ? (
+                          <ruby key={idx} style={{ marginRight: 2 }}>
+                            <span>{w.text}</span>
+                            <rt style={{ fontSize: 11, color: '#888' }}>{w.ruby}</rt>
+                          </ruby>
+                        ) : (
+                          <span key={idx}>{w.text}</span>
+                        )
+                      ))
+                    : currentSentence?.text}
                 </p>
               ) : (
                 /* 文本隐藏时显示占位 */
@@ -196,6 +204,7 @@ const MobileReaderPage: React.FC = () => {
                 ref={activeSentenceId === s.id ? activeSentenceRef : null}
               >
                 <MobileSentenceItem
+                  text={s.text}
                   rubyWords={s.rubyWords}
                   translation={s.translation}
                   isActive={activeSentenceId === s.id}

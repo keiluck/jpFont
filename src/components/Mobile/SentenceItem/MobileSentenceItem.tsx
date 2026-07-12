@@ -3,6 +3,7 @@ import { RubyWord } from '@/types'
 import { TranslationMode } from '@/components/Mobile/AudioPlayer/MobileAudioPlayer'
 
 interface MobileSentenceItemProps {
+  text: string
   rubyWords: RubyWord[]
   translation: string
   isActive: boolean
@@ -26,7 +27,7 @@ const getWordType = (text: string) => {
 }
 
 const MobileSentenceItem: React.FC<MobileSentenceItemProps> = ({
-  rubyWords, translation, isActive, showRuby, translationMode, onClick,
+  text, rubyWords, translation, isActive, showRuby, translationMode, onClick,
 }) => {
   const [showTrans, setShowTrans] = useState(false)
 
@@ -48,7 +49,7 @@ const MobileSentenceItem: React.FC<MobileSentenceItemProps> = ({
     >
       {/* 日语原文（带振假名 + 颜色高亮） */}
       <p style={{ fontSize: 18, lineHeight: 2.2, color: '#1a1a2e', margin: '0 0 6px', wordBreak: 'break-all' }}>
-        {rubyWords.map((w, idx) => {
+        {rubyWords.length > 0 ? rubyWords.map((w, idx) => {
           const type = getWordType(w.text)
           const wordStyle: React.CSSProperties = {
             backgroundColor: isActive && type !== 'other' ? typeColor[type] : 'transparent',
@@ -64,7 +65,7 @@ const MobileSentenceItem: React.FC<MobileSentenceItemProps> = ({
           ) : (
             <span key={idx} style={wordStyle}>{w.text}</span>
           )
-        })}
+        }) : text}
       </p>
 
       {/* 中文翻译 */}
