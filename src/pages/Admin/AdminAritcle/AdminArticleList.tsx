@@ -13,6 +13,7 @@ export default function AdminArticleList() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [translation, setTranslation] = useState('')
   const [audioFile, setAudioFile] = useState<File | null>(null)
   const [existingAudioUrl, setExistingAudioUrl] = useState('')
 
@@ -38,6 +39,7 @@ export default function AdminArticleList() {
     setEditingId(null)
     setTitle('')
     setContent('')
+    setTranslation('')
     setAudioFile(null)
     setExistingAudioUrl('')
   }
@@ -55,7 +57,10 @@ export default function AdminArticleList() {
   const handleEdit = (article: Article) => {
     setEditingId(article.id)
     setTitle(article.title)
-    setContent(article.content)
+    // content 里可能只存了首句，日语全文在 sentences[].text 中，每句一行便于与译文对照
+    const hasSentences = article.sentences && article.sentences.length > 0
+    setContent(hasSentences ? article.sentences.map(s => s.text).join('\n') : article.content)
+    setTranslation(article.translation ?? (hasSentences ? article.sentences.map(s => s.translation).join('\n') : ''))
     setExistingAudioUrl(article.audioUrl)
     setAudioFile(null)
     setShowForm(true)
@@ -68,10 +73,10 @@ export default function AdminArticleList() {
       const audioUrl = audioFile ? await uploadAudio(audioFile) : existingAudioUrl
 
       if (editingId) {
-        const updated = await adminUpdateArticle(editingId, { title, content, audioUrl })
+        const updated = await adminUpdateArticle(editingId, { title, content, translation, audioUrl })
         setArticles(prev => prev.map(a => (a.id === editingId ? updated : a)))
       } else {
-        const created = await adminCreateArticle({ title, content, audioUrl, sentences: [] })
+        const created = await adminCreateArticle({ title, content, translation, audioUrl, sentences: [] })
         setArticles(prev => [...prev, created])
       }
       resetForm()
@@ -94,11 +99,16 @@ export default function AdminArticleList() {
       {showForm && (
         <form className="question-form" onSubmit={handleSubmit}>
           <label>标题 <input value={title} onChange={e => setTitle(e.target.value)} required /></label>
-          <label>内容（日语全文）
-            <textarea value={content} onChange={e => setContent(e.target.value)} rows={4} />
-          </label>
-          <label>上传音频（mp3）
-            <input type="file" accept=".mp3,audio/*" onChange={e => setAudioFile(e.target.files?.[0] || null)} />
+          <div className="form-row">
+            <label>内容（日语全文，每句一行）
+              <textarea value={content} onChange={e => setContent(e.target.value)} rows={16} />
+            </label>
+            <label>中文翻译（与日文逐行对照）
+              <textarea value={translation} onChange={e => setTranslation(e.target.value)} rows={16} />
+            </label>
+          </div>
+          <label>上传音频（mp3 / m4a / wav 等）
+            <input type="file" accept=".mp3,.m4a,.wav,.aac,.ogg,audio/*" onChange={e => setAudioFile(e.target.files?.[0] || null)} />
             {audioFile ? <span className="file-name">📁 {audioFile.name}</span> : existingAudioUrl && <span className="file-name">📁 {existingAudioUrl}</span>}
           </label>
           <div className="form-footer">

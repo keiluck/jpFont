@@ -8,6 +8,16 @@ const apiClient = axios.create({
   timeout: 10000,
 })
 
+// 后端异常时 HTTP 状态仍为 200，错误信息包在 body 里（code !== 200，data 为 null），
+// 这里统一转成异常，避免调用方拿到 null 数据
+apiClient.interceptors.response.use(res => {
+  const body = res.data as ApiResponse<unknown> | undefined
+  if (body && typeof body.code === 'number' && body.code !== 200) {
+    return Promise.reject(new Error(body.message || '请求失败'))
+  }
+  return res
+})
+
 /**
  * 获取文章列表
  */

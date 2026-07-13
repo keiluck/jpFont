@@ -25,6 +25,7 @@ export interface Article {
   id: string
   title: string
   content: string
+  translation?: string
   audioUrl: string
   sentences: Sentence[]
   createdAt: string

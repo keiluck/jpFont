@@ -5,6 +5,39 @@ import { getArticleById } from '@/services/api'
 import MobileAudioPlayer, { TranslationMode } from '@/components/Mobile/AudioPlayer/MobileAudioPlayer'
 import MobileSentenceItem from '@/components/Mobile/SentenceItem/MobileSentenceItem'
 
+// 后台直接录入的文章没有逐句数据（sentences 为空），
+// 用 content / translation 按行配对生成展示用句子（无时间轴，不参与音频高亮）
+const getDisplaySentences = (article: Article): Sentence[] => {
+  if (article.sentences && article.sentences.length > 0) return article.sentences
+  const jaLines = (article.content || '').split('\n')
+  const zhLines = (article.translation || '').split('\n')
+  return jaLines
+    .map((text, i) => ({ text: text.trim(), translation: (zhLines[i] || '').trim() }))
+    .filter(l => l.text)
+    .map((l, i) => ({
+      id: `line-${i}`,
+      text: l.text,
+      translation: l.translation,
+      startTime: -1,
+      endTime: -1,
+      rubyWords: [],
+    }))
+}
+
+// 无时间轴的句子：按字数比例把音频总时长分摊到每句，估算各句的时间段，
+// 让播放高亮和点句跳转也能大致工作（精确同步需要人工标注时间戳）
+const estimateBounds = (sentences: Sentence[], duration: number): { start: number; end: number }[] => {
+  const total = sentences.reduce((sum, s) => sum + Math.max(s.text.length, 1), 0)
+  let acc = 0
+  return sentences.map(s => {
+    const start = (acc / total) * duration
+    acc += Math.max(s.text.length, 1)
+    return { start, end: (acc / total) * duration }
+  })
+}
+
+const isUntimed = (sentences: Sentence[]) => sentences.length > 0 && sentences[0].startTime < 0
+
 const MobileReaderPage: React.FC = () => {
   const navigate = useNavigate()
   const { id } = useParams()
@@ -56,30 +89,45 @@ const MobileReaderPage: React.FC = () => {
   // 普通模式：根据音频时间高亮句子
   const handleTimeUpdate = (currentTime: number) => {
     if (!article) return
-    const active = article.sentences.find(
-      (s: Sentence) => currentTime >= s.startTime && currentTime < s.endTime
-    )
-    if (active) {
-      setActiveSentenceId(active.id)
-      // 集中听力模式下同步 listeningIndex
-      if (listeningMode) {
-        const idx = article.sentences.indexOf(active)
-        if (idx !== -1) setListeningIndex(idx)
+    const sentences = getDisplaySentences(article)
+    let idx = -1
+    if (isUntimed(sentences)) {
+      const audio = document.querySelector('audio') as HTMLAudioElement | null
+      const duration = audio?.duration
+      if (duration && isFinite(duration) && duration > 0) {
+        const bounds = estimateBounds(sentences, duration)
+        idx = bounds.findIndex(b => currentTime >= b.start && currentTime < b.end)
       }
+    } else {
+      idx = sentences.findIndex(
+        (s: Sentence) => currentTime >= s.startTime && currentTime < s.endTime
+      )
+    }
+    if (idx !== -1) {
+      setActiveSentenceId(sentences[idx].id)
+      // 集中听力模式下同步 listeningIndex
+      if (listeningMode) setListeningIndex(idx)
     }
   }
 
   // 集中听力：跳转到指定句子
   const jumpToSentence = (idx: number, art: Article) => {
-    if (idx < 0 || idx >= art.sentences.length) return
+    const sentences = getDisplaySentences(art)
+    if (idx < 0 || idx >= sentences.length) return
     setListeningIndex(idx)
-    setActiveSentenceId(art.sentences[idx].id)
+    setActiveSentenceId(sentences[idx].id)
     // 通过 DOM 直接操作 audio（通过 MobileAudioPlayer 的 audioRef）
     const audio = document.querySelector('audio') as HTMLAudioElement | null
-    if (audio) {
-      audio.currentTime = art.sentences[idx].startTime
-      audio.play().catch(console.error)
+    if (!audio) return
+    let start = sentences[idx].startTime
+    if (start < 0) {
+      // 无时间轴：跳到按字数估算的位置
+      const duration = audio.duration
+      if (!duration || !isFinite(duration) || duration <= 0) return
+      start = estimateBounds(sentences, duration)[idx].start
     }
+    audio.currentTime = start
+    audio.play().catch(console.error)
   }
 
   if (loading) {
@@ -104,8 +152,9 @@ const MobileReaderPage: React.FC = () => {
     )
   }
 
-  const totalSentences = article.sentences.length
-  const currentSentence = article.sentences[listeningIndex]
+  const displaySentences = getDisplaySentences(article)
+  const totalSentences = displaySentences.length
+  const currentSentence = displaySentences[listeningIndex]
 
   return (
     <div style={{ minHeight: '100vh', background: '#fff', paddingBottom: listeningMode ? 0 : 200, overflow: listeningMode ? 'hidden' : undefined }}>
@@ -198,7 +247,7 @@ const MobileReaderPage: React.FC = () => {
           </div>
 
           <div>
-            {article.sentences.map((s: Sentence) => (
+            {displaySentences.map((s: Sentence) => (
               <div
                 key={s.id}
                 ref={activeSentenceId === s.id ? activeSentenceRef : null}
@@ -229,7 +278,7 @@ const MobileReaderPage: React.FC = () => {
           setListeningMode(v => !v)
           // 进入集中听力时，定位到当前激活句子
           if (!listeningMode && activeSentenceId) {
-            const idx = article.sentences.findIndex(s => s.id === activeSentenceId)
+            const idx = displaySentences.findIndex(s => s.id === activeSentenceId)
             if (idx !== -1) setListeningIndex(idx)
           }
         }}
