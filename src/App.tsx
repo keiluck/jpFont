@@ -6,6 +6,7 @@ import QuizPage from '@/pages/PC/QuizPage/QuizPage'
 import QuizCategoryPage from '@/pages/PC/QuizCategoryPage/QuizCategoryPage'
 import QuizDetailPage from '@/pages/PC/QuizDetailPage/QuizDetailPage'
 import AdminPage from '@/pages/Admin/AdminHome/AdminPage'
+import MobileHomePage from '@/pages/Mobile/HomePage/MobileHomePage'
 import MobileReaderPage from '@/pages/Mobile/ReaderPage/MobileReaderPage'
 import './App.css'
 
@@ -24,6 +25,7 @@ function App() {
         {/* 后台管理 */}
         <Route path="/admin" element={<AdminPage />} />
         {/* 手机端跟读 */}
+        <Route path="/m" element={<MobileHomePage />} />
         <Route path="/m/:lang/:category/article/:id" element={<MobileReaderPage />} />
       </Routes>
     </BrowserRouter>
