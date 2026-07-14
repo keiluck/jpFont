@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from '@/pages/PC/HomePage/HomePage'
 import CategoryPage from '@/pages/PC/CategoryPage/CategoryPage'
 import ReaderPage from '@/pages/PC/ReaderPage/ReaderPage'
@@ -6,6 +6,8 @@ import QuizPage from '@/pages/PC/QuizPage/QuizPage'
 import QuizCategoryPage from '@/pages/PC/QuizCategoryPage/QuizCategoryPage'
 import QuizDetailPage from '@/pages/PC/QuizDetailPage/QuizDetailPage'
 import AdminPage from '@/pages/Admin/AdminHome/AdminPage'
+import AdminLoginPage from '@/pages/Admin/Login/AdminLoginPage'
+import ProtectedRoute from '@/components/ProtectedRoute'
 import MobileHomePage from '@/pages/Mobile/HomePage/MobileHomePage'
 import MobileReaderPage from '@/pages/Mobile/ReaderPage/MobileReaderPage'
 import './App.css'
@@ -22,8 +24,10 @@ function App() {
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz/:category" element={<QuizCategoryPage />} />
         <Route path="/quiz/:category/:id" element={<QuizDetailPage />} />
-        {/* 后台管理 */}
-        <Route path="/admin" element={<AdminPage />} />
+        {/* 后台管理（需登录） */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin/dashboard" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
         {/* 手机端跟读 */}
         <Route path="/m" element={<MobileHomePage />} />
         <Route path="/m/:lang/:category/article/:id" element={<MobileReaderPage />} />

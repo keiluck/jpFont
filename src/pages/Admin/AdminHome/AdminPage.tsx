@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AdminQuestionList from '@/pages/Admin/AdminQuestion/AdminQuestionList'
 import AdminQuestionForm from '@/pages/Admin/AdminQuestion/AdminQuestionForm'
 import AdminArticleList from '@/pages/Admin/AdminAritcle/AdminArticleList'
+import { adminLogout } from '@/services/api'
 import './AdminPage.css'
 
 type AdminTab = 'questions' | 'question-form' | 'articles'
@@ -25,6 +26,9 @@ export default function AdminPage() {
           </button>
         </nav>
         <button className="admin-back-btn" onClick={() => navigate('/')}>← 返回网站</button>
+        <button className="admin-back-btn" onClick={() => { adminLogout(); navigate('/admin/login', { replace: true }) }}>
+          ⏻ 退出登录
+        </button>
       </aside>
 
       <main className="admin-main">

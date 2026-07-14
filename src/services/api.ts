@@ -8,15 +8,38 @@ const apiClient = axios.create({
   timeout: 10000,
 })
 
-// 后端异常时 HTTP 状态仍为 200，错误信息包在 body 里（code !== 200，data 为 null），
-// 这里统一转成异常，避免调用方拿到 null 数据
-apiClient.interceptors.response.use(res => {
-  const body = res.data as ApiResponse<unknown> | undefined
-  if (body && typeof body.code === 'number' && body.code !== 200) {
-    return Promise.reject(new Error(body.message || '请求失败'))
+export const ADMIN_TOKEN_KEY = 'admin_token'
+
+// 有 token 时自动带上 Authorization 头（公开接口忽略该头，不受影响）
+apiClient.interceptors.request.use(config => {
+  const token = localStorage.getItem(ADMIN_TOKEN_KEY)
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
   }
-  return res
+  return config
 })
+
+// 后端异常时 HTTP 状态仍为 200，错误信息包在 body 里（code !== 200，data 为 null），
+// 这里统一转成异常，避免调用方拿到 null 数据；
+// 真实 HTTP 401（未登录/token 过期）则清除 token 并跳转登录页
+apiClient.interceptors.response.use(
+  res => {
+    const body = res.data as ApiResponse<unknown> | undefined
+    if (body && typeof body.code === 'number' && body.code !== 200) {
+      return Promise.reject(new Error(body.message || '请求失败'))
+    }
+    return res
+  },
+  error => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem(ADMIN_TOKEN_KEY)
+      if (window.location.pathname.startsWith('/admin') && window.location.pathname !== '/admin/login') {
+        window.location.href = '/admin/login'
+      }
+    }
+    return Promise.reject(error)
+  }
+)
 
 /**
  * 获取文章列表
@@ -136,6 +159,21 @@ export const uploadAudio = async (file: File): Promise<string> => {
   })
   return res.data.data
 }
+
+// ==================== Admin - 登录 ====================
+
+export const adminLogin = async (username: string, password: string): Promise<string> => {
+  const res = await apiClient.post<ApiResponse<{ token: string; username: string }>>('/admin/login', { username, password })
+  const token = res.data.data.token
+  localStorage.setItem(ADMIN_TOKEN_KEY, token)
+  return token
+}
+
+export const adminLogout = () => {
+  localStorage.removeItem(ADMIN_TOKEN_KEY)
+}
+
+export const isAdminLoggedIn = () => !!localStorage.getItem(ADMIN_TOKEN_KEY)
 
 export const uploadQuestionFile = async (file: File): Promise<number> => {
   const form = new FormData()
